@@ -1,0 +1,37 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/Dudka Bold Italic.ttf",
+      "sha1": "c815be5cafae936cf90e87aa76e867a08d45c5ee"
+    },
+    {
+      "path": "assets/fonts/Dudka Regular Italic.ttf",
+      "sha1": "80033a4dcff4fcba5fe5e975df531ba82fbac205"
+    },
+    {
+      "path": "assets/fonts/Dudka Regular.ttf",
+      "sha1": "a07322c5385402ca518bd9fe3b0f9fd39ca00c7f"
+    },
+    {
+      "path": "assets/fonts/Dudka Thin Italic.ttf",
+      "sha1": "fe783d0e0437b70c7d6a2e990bbdacbb0dbe085a"
+    },
+    {
+      "path": "assets/fonts/Dudka Thin.ttf",
+      "sha1": "8adb764af01bc8df4baba66f3b16e9db99344874"
+    },
+    {
+      "path": "assets/fonts/DudkaBold.ttf",
+      "sha1": "18c1e07e0eaf59e6b97f458b50c2015a4843f50a"
+    },
+    {
+      "path": "assets/fonts/OFL.txt",
+      "sha1": "26b1dd28bf377255041da091eb5b3e7e26e362c2"
+    },
+    {
+      "path": "assets/fonts/README.txt",
+      "sha1": "ebd8a5e3733886e6bf28dda0a7e36c6b4c00c443"
+    }
+  ]
+}
