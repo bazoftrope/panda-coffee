@@ -53,8 +53,19 @@ export default function Main() {
   async function getCat() {
     try {
       let response = await fetch(ip + '/main');
+      if (!response.ok) { // Проверяем, что ответ успешный
+        throw new Error('Ошибка при получении данных: ' + response.status);
+      }
       let json = await response.json();
-      console.log(json, 'данные getCat')
+      console.log('Before processing:', JSON.stringify(json, null, 2));
+
+      json.forEach(item => {
+        if (item.children) {
+          item.children = item.children.map(child => ({ id: child.id, name: child.name }));
+        }
+      });
+
+      console.log('After processing:', JSON.stringify(json, null, 2));
       setMenuData(json);
     } catch (error) {
       console.log(error, 'error');
@@ -108,10 +119,10 @@ export default function Main() {
                 key={el.id}
                 style={styles.category}
                 onPress={() => {
-                  el['subcat'] ? navigation.navigate('subCat', { num: el.id }) :
+                  el['children'].length > 0 ? navigation.navigate('subCat', { obj: el['children'] }) :
                     navigation.navigate('Меню', { num: el.id })
                 }}>
-                <Text style={styles.text}>{el.title}</Text>
+                <Text style={styles.text}>{el.name}</Text>
               </TouchableOpacity>
             ))}
           </ScrollView>

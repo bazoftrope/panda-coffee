@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import {
   View,
   Text,
+  Image,
   ScrollView,
   ImageBackground,
   useWindowDimensions,
@@ -68,22 +69,45 @@ export default function Hot_dog({ route }) {
 
   };
 
+
+
+
   useEffect(() => {
     async function FetchData() {
-      let response = await fetch(ip + '/cat', {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ num }),
-      });
-      let json = await response.json();
-      console.log(json, 'json in category');
-      setData(json);
+      try {
+        let response = await fetch(ip + '/cat', {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ num }),
+        });
+        let json = await response.json();
+        console.log('Before processing:', JSON.stringify(json, null, 2));
+
+        json.forEach(item => {
+          if (item.children) {
+            item.children = item.children.map(child => ({ id: child.id, name: child.name }));
+          }
+        });
+
+        console.log('After processing:', JSON.stringify(json, null, 2));
+
+        setData(json);
+      } catch (error) {
+        console.log(error, 'error');
+      }
+
     }
     FetchData();
   }, []);
+
+
+
+
+
+
 
   const changeOfHeart = async () => {
     console.log(dataCard.id, 'item_id');
@@ -143,100 +167,35 @@ export default function Hot_dog({ route }) {
           <View key={el.id} style={styles.list}>
             <TouchableOpacity
               onPress={() => navigation.navigate('card', { el })}
-              style={styles.imgPart}>
-              <ImageBackground
-                style={styles.imgPart}
-                source={{ uri: ip + '/images/' + el.item + '.jpg' }}
-              />
+              style={styles.mediaBlock}>
+              <Text style={styles.title} >{el.item}</Text>
             </TouchableOpacity>
-            <View style={styles.txtPart}>
-              <Text style={styles.txt}>{el.item}</Text>
-              <TouchableOpacity
-                price={el.price}
-                onPress={function () { toCart(storeUserId, el.id) }}
-                style={styles.btn}>
-                <Text style={styles.btnTxt}>{el.price + ' р.'}</Text>
-              </TouchableOpacity>
+
+
+            <View
+              style={styles.btnBlock}>
+
+              <View style={styles.box}>
+                {el.arr?.map((element, index) => (
+                  <TouchableOpacity
+                    key={element.id}
+                    onPress={() => alert(element.id)}
+                    style={styles.btn}>
+                    <Image
+                      style={[styles.img, { width: 50 + (index * 10), height: 50 }]}
+                      resizeMode='contain'
+                      source={require('../../components/images/cup.png')}
+                    />
+                    <Text style={styles.btnTxt}>{element.price} р.</Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+
             </View>
           </View>
         ))}
       </ScrollView>
       <View />
-      <BottomSheetTwo
-        userId={storeUserId}
-        newOptions={newOptions}
-        show={show}
-        onDismiss={() => setShow(false)}
-        item={dataCard.item}
-        id={dataCard.id}
-        price={dataCard.price}>
-        <View style={styles.modalBlock}>
-          <View style={styles.mainBlock}>
-            <View style={styles.modalImg}>
-            </View>
-            <View
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: '#fff',
-                paddingBottom: 30,
-              }}>
-              <ImageBackground
-                style={{
-                  width: '100%',
-                  height: 210,
-                  resizeMode: 'contain',
-                }}
-                source={{ uri: ip + '/images/' + dataCard.item + '.jpg' }}
-              />
-            </View>
-            <View style={styles.textBlock}>
-              <View style={{ display: 'flex', width: '100%', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 10, paddingRight: 10, }}>
-                <Text style={styles.itemHeader}>{dataCard.item}</Text>
-                <View style={styles.heartView}>
-                  <TouchableOpacity onPress={changeOfHeart}>
-                    {heartVis ? (
-                      <ImageBackground
-                        style={styles.heartPng}
-                        source={{
-                          uri: 'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-256.png',
-                        }}
-                      />
-                    ) : (
-                      <ImageBackground
-                        style={styles.heartPng}
-                        source={{
-                          uri: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-heart-outline-512.png',
-                        }}
-                      />
-                    )}
-                  </TouchableOpacity>
-                </View>
-              </View>
-              <Text />
-              <Text style={{ color: 'black', fontSize: 14 }}>{dataCard.description}</Text>
-              <View style={styles.options}>
-                {options.map(el => {
-                  return (
-                    <TouchableOpacity
-                      onPress={() => makeOptions(el.id)}
-                      style={newOptions.includes(el.id) ? styles.newOptionMark : styles.optionMark}
-                      key={el.id}>
-
-                      <Text
-                        style={newOptions.includes(el.id) ? styles.newTextMark : styles.textMark}
-
-                      >{el.title}</Text>
-
-                    </TouchableOpacity>
-                  )
-                })}
-
-              </View>
-            </View>
-          </View>
-        </View>
-      </BottomSheetTwo>
     </View>
   );
 }

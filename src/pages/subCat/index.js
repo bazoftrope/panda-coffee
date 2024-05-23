@@ -13,36 +13,24 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 export default function SubCut({ route }) {
   const navigation = useNavigation();
 
-  const { num } = route.params
-  console.log(num, 'num')
+  const { obj } = route.params
+  console.log(obj, 'obj')
 
   const [cat, setCat] = useState([])
 
   useEffect(() => {
-    getSubCat(num)
+    setCat(obj)
   }, []);
 
-  async function getSubCat(number) {
-    console.log(number, 'number getsubcat')
-    let response = await fetch(ip + '/testCat', {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ number }),
-    });
-    let json = await response.json();
-    console.log(json, 'json in subCat');
-    setCat(json)
-  }
+
 
   return (
     <View><Text>Subcut</Text>
       {
         cat.map(el => <TouchableOpacity
-          onPress={() => navigation.navigate('Меню', { num: el })}
-        ><Text>{el}</Text></TouchableOpacity>)
+          key={el.id}
+          onPress={() => navigation.navigate('Меню', { num: el.id })}
+        ><Text>{el.name}</Text></TouchableOpacity>)
       }
 
     </View>
