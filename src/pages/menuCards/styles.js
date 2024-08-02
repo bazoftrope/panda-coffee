@@ -1,17 +1,20 @@
 import { StyleSheet } from "react-native";
+import { colors } from '../../components/cssColors'
 
 const styles = StyleSheet.create({
   main_container: {
     flex: 1,
+    backgroundColor: colors.light,
+
   },
   item: {
     flex: 1,
     maxHeight: 200,
-    backgroundColor: 'yellow'
+    backgroundColor: colors.light
   },
   options: {
     flex: 3,
-    backgroundColor: 'grey'
+    backgroundColor: colors.light
   },
   titel: {
     flex: 1,
@@ -37,6 +40,17 @@ const styles = StyleSheet.create({
     height: '90%',
     alignItems: 'center',
   },
+  newlot: {
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderBlockColor: 'red',
+    borderRadius: 10,
+    width: '30%',
+    height: '90%',
+    alignItems: 'center',
+    backgroundColor: 'red'
+  },
+
   img: {
     flex: 3,
     width: '50%',
@@ -50,7 +64,9 @@ const styles = StyleSheet.create({
     fontFamily: 'DudkaBold',
   },
   cat: {
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'DudkaBold',
+
   },
   opt: {
     flexDirection: 'row',
@@ -58,14 +74,39 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around'
   },
   optext: {
-    textAlign: 'center',
-    textAlignVertical: 'center',
+    justifyContent: 'center',
     borderStyle: 'solid',
     borderWidth: 1,
     borderRadius: 10,
     width: '32%',
     height: 35,
-    marginTop: 3
+    marginTop: 3,
+    backgroundColor: colors.dark,
+  },
+  newOptext: {
+    justifyContent: 'center',
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderRadius: 10,
+    width: '32%',
+    height: 35,
+    marginTop: 3,
+    backgroundColor: 'yellow',
+  },
+  toCartbtn: {
+    paddingTop: 5,
+    height: 40,
+    alignItems: 'center',
+  },
+  txtbtn: {
+    textAlignVertical: 'center',
+    height: 30,
+    width: '30%',
+    textAlign: 'center',
+    borderStyle: 'solid',
+    borderBlockColor: colors.dark,
+    borderWidth: 1,
+    borderRadius: 10
   }
 
 

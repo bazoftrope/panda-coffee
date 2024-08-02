@@ -4,8 +4,6 @@ import {
   Text,
   Image,
   TouchableOpacity,
-  ImageBackground,
-  Button,
   ScrollView
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -14,9 +12,11 @@ import { useSelector } from 'react-redux';
 import { ip } from '../../helpers/ip';
 import { styles } from './styles';
 import SplashScreen from '../../components/screens/SplashScreen';
+import ButtonsBlock from '../../components/AdminComponents/ButtonsBlock';
 
 
 export default function Main() {
+
   const store = useSelector(store => store.userStore);
   const storeUserId = useSelector(st => st.userStoreId);
   const storePaymentId = useSelector(st => st.confPaymentId);
@@ -25,6 +25,8 @@ export default function Main() {
 
   const [splashTimeOver, setSplashTimeOver] = useState(false);
   const [menuData, setMenuData] = useState([{}]);
+
+
 
   console.log(admin, '<---------------- store')
 
@@ -85,20 +87,7 @@ export default function Main() {
                 <Image source={require('../../components/images/panda-bear.png')} style={styles.img} />
                 <Text>Аккаунт</Text>
               </TouchableOpacity>
-              {admin === 'admin' ? (
-                <View>
-                  <Button
-                    title="Заказы"
-                    color="#f194ff"
-                    onPress={() => navigation.navigate('Админка')}
-                  />
-                  <Button
-                    title="Редактирование"
-                    color="#f194ff"
-                    onPress={() => navigation.navigate('Редактирование')}
-                  />
-                </View>
-              ) : null}
+              <ButtonsBlock />
             </View>
           ) : (
             <View style={styles.administrator}>
@@ -112,7 +101,7 @@ export default function Main() {
           )}
           <ScrollView
             style={styles.column}
-            horizontal={true}
+            contentContainerStyle={{ flexDirection: 'row', flexWrap: 'wrap' }}
           >
             {menuData.map(el => (
               <TouchableOpacity

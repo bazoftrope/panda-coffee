@@ -39,23 +39,23 @@ const App = () => {
   const Options = {
     headerStyle: {
       backgroundColor: colors.light,
+      shadowColor: 'transparent', // Установите цвет тени в прозрачный
+      shadowOffset: { width: 0, height: 0 }, // Установите смещение тени в 0
+      shadowOpacity: 0, // Установите прозрачность тени в 0
+      shadowRadius: 0, // Установите радиус тени в 
     },
-    headerTintColor: '#fff',
+    headerTintColor: colors.darkBrown,
 
     headerTitleStyle: {
-      fontWeight: 'bold'
+      fontFamily: 'DudkaBold',
+      color: colors.darkBrown
+
+
     }
   }
 
 
-  // function headerImg() {
-  //   return (
-  //     <Image
-  //       style={{ width: '100%', height: '100%' }}
-  //       source={require('./src/components/images/pandaGrounddark.jpg')}
-  //     />
-  //   );
-  // }
+
 
   return (
     <Provider store={store}>
@@ -68,9 +68,9 @@ const App = () => {
             <Stack.Screen name="Корзина" component={Cart} options={Options} />
             <Stack.Screen name="Регистрация" component={Signup} options={{ title: null }} />
             <Stack.Screen name="Авторизация" component={Signin} options={{ title: null }} />
-            <Stack.Screen name="Меню" component={Category} options={{ title: null }} />
+            <Stack.Screen name="Меню" component={Category} options={Options} />
             <Stack.Screen name="Аккаунт" component={Account} options={{ title: null }} />
-            <Stack.Screen name="card" component={Card} options={{ title: null }} />
+            <Stack.Screen name="card" component={Card} options={Options} />
             <Stack.Screen name="Избранное" component={Favourite} options={{ title: null }} />
             <Stack.Screen name="Оплата" component={PaymentForm} options={{ title: null }} />
             <Stack.Screen name="Юкасса" component={Yookassa} options={{ title: 'Оплата', headerLeft: null, gestureEnabled: false, }} />

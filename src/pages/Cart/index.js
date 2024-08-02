@@ -62,14 +62,17 @@ export default function Cart() {
         {data.map(el => (
           <View key={el.id} style={styles.cartItem}>
             <View style={styles.textItem}>
-              <Text style={{ color: 'black' }}>{el['Menu.item']}</Text>
-              <Text style={{ color: 'black', marginTop: '2%' }}>{'Количество: ' + el['quantity']}</Text>
+              <Text style={styles.txt}>{el['Menu.item']}</Text>
+              <Text style={styles.txt}>{'Количество: ' + el['quantity']}</Text>
+              <Text style={styles.txt}>{'цена: ' + el['price']}</Text>
+
             </View>
             <View >
               {el['options']?.map((option, index) => {
                 return (
                   <View key={index}>
                     <Text
+                      style={styles.optList}
                     >{option}</Text></View>
                 )
               })}
@@ -78,7 +81,7 @@ export default function Cart() {
               <Button
                 onPress={() => { delCart(el.id, el['quantity']) }}
                 title='&#10060;'
-                color='white'
+                color='transparent'
               />
             </View>
           </View>
@@ -93,7 +96,7 @@ export default function Cart() {
               navigation.navigate('мои заказы')
             }}
             style={styles.btnCart}>
-            <Text style={{ color: 'white', letterSpacing: 2, fontSize: 15 }}>Купить</Text>
+            <Text style={{ color: 'green', letterSpacing: 2, fontSize: 15 }}>Купить</Text>
           </TouchableOpacity>
         </View>
       </View>

@@ -163,7 +163,7 @@ export default function Hot_dog({ route }) {
       <ScrollView
         style={{ flex: 1 }}
         contentContainerStyle={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-        {data.map((el) => (
+        {data?.map((el) => (
           <View key={el.id} style={styles.list}>
             <TouchableOpacity
               onPress={() => navigation.navigate('card', { el })}

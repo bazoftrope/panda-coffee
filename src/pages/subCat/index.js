@@ -25,12 +25,18 @@ export default function SubCut({ route }) {
 
 
   return (
-    <View><Text>Subcut</Text>
+    <View
+      style={styles.mainbox}
+
+    >
       {
-        cat.map(el => <TouchableOpacity
-          key={el.id}
-          onPress={() => navigation.navigate('Меню', { num: el.id })}
-        ><Text>{el.name}</Text></TouchableOpacity>)
+        cat.map(el =>
+          <TouchableOpacity
+            style={styles.cat}
+            key={el.id}
+            onPress={() => navigation.navigate('Меню', { num: el.id })}
+          ><Text style={styles.txt}>{el.name}</Text>
+          </TouchableOpacity>)
       }
 
     </View>

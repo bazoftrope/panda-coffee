@@ -10,38 +10,34 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     // backgroundColor: 'red'
   },
+  button: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    marginHorizontal: 100,
+  },
   administrator: {
+    // height: 200,
     flex: 1,
     maxWidth: '100%',
-    // alignItems: 'center',
-    backgroundColor: light
+    backgroundColor: light,
+
   },
   column: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    maxHeight: 220,
-    width: '100%',
     backgroundColor: light,
 
   },
   category: {
-
-    marginTop: 10,
-    marginLeft: 10,
-    marginBottom: 10,
-    // flexDirection: 'column',
+    marginLeft: 5,
+    marginBottom: 5,
     height: 200,
-    width: 200,
+    width: '48%',
     borderWidth: 1,
     borderColor: dark,
     borderRadius: 20,
-    backgroundColor: dark
-    // shadowColor: 'rgb(87, 152, 109)',
-    // elevation: 5,
+    backgroundColor: dark,
   },
-
-
   text: {
     flex: 1,
     textAlign: 'center',

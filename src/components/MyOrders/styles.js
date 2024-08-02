@@ -1,8 +1,10 @@
 import { StyleSheet } from "react-native";
+import { colors } from "../../components/cssColors"
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: colors.light
   },
   current: {
     alignItems: 'center'
@@ -41,18 +43,18 @@ const styles = StyleSheet.create({
 
   },
   text: {
-  color: 'white', 
-  letterSpacing: 2, 
-  fontSize: 15
-},
+    color: 'white',
+    letterSpacing: 2,
+    fontSize: 15
+  },
   table: {
-    backgroundColor: 'black', 
-    borderRadius: 10,
+    backgroundColor: colors.dark,
     marginHorizontal: 10,
-    marginTop: 10
+    marginTop: 10,
+    border: { borderWidth: 1, borderColor: 'white' }
   },
   tables: {
-    height: 60
+    Height: 100
   },
   tablehead: {
     height: 30,
@@ -76,9 +78,10 @@ const styles = StyleSheet.create({
     marginEnd: 10
   },
   txtCol: {
+    height: 10,
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 13,
+    fontSize: 8,
   },
   btns: {
     marginTop: 10,

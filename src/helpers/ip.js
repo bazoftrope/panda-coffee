@@ -1,6 +1,6 @@
-// const ip = 'https://www.pandacoffee.na4u.ru'; // home
+// const ip = 'https://panda-coffee.na4u.ru'; // home
 
-const ip = 'http://192.168.31.10:3001'
+const ip = 'http://192.168.31.08:3001'
 
 // const ip = 'http://192.168.0.8:3001' // ekat
 

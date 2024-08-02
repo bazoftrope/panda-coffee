@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
+import { colors } from '../../components/cssColors'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.light,
   },
   mainBlock: {
     width: '100%',
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     height: 300,
     width: '47%',
-    backgroundColor: 'white',
+    backgroundColor: colors.darkBrown,
     borderRadius: 10,
     shadowColor: 'black',
     shadowOffset: {
@@ -40,9 +41,11 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    color: 'black',
+    color: colors.light,
     textAlign: 'center',
     fontSize: 16,
+    fontFamily: 'DudkaBold',
+
   },
 
   btnBlock: {
@@ -71,7 +74,7 @@ const styles = StyleSheet.create({
     // flex: 1,
     textAlign: 'center',
     textAlignVertical: 'center',
-    backgroundColor: 'white',
+    backgroundColor: colors.light,
     height: '15%',
     width: '80%',
     marginBottom: 5,
@@ -85,6 +88,8 @@ const styles = StyleSheet.create({
     shadowRadius: 9.11,
     color: 'black',
     elevation: 5,
+    fontFamily: 'DudkaBold',
+
   },
 
 

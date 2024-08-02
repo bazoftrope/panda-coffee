@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    borderTopWidth: 0.2,
+    borderTopWidth: 0,
   },
   mainContainer: {
     maxWidth: '100%',

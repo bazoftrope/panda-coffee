@@ -131,24 +131,22 @@ export default function MyOrders() {
   return (
     <ScrollView style={styles.container}>
       <Table
-        borderStyle={{ borderWidth: 1, borderColor: 'white' }}
         style={styles.table} >
         <Row
           style={styles.tablehead}
           textStyle={styles.headtxt}
           data={tableHead}
-          flexArr={[3, 1, 1, 2]} />
+          flexArr={[3, 1, 1, 3]} />
+
         {order.map(el => (
           <Row
             key={el['id']}
-            flexArr={[3, 1, 1, 2]}
+            flexArr={[3, 1, 1, 3]}
             style={styles.tables}
             textStyle={styles.tabletxt}
             data={[el['Menu.item'], el['quantity'], el['Menu.price'], tableOpt(el['options'])]}
           />
-        )
-
-        )}
+        ))}
       </Table>
       <View style={styles.btns}>
         <TextInput
